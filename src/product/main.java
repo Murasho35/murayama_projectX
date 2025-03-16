@@ -22,13 +22,13 @@ public class main {
 		manager.removeProduct(1);
 
 		// 削除後の商品リストを表示
-		System.out.println("---商品を1つ削除して全てを表示する---");
+		System.out.println("\n---商品を1つ削除して全てを表示する---");
 		for (Product product : manager.getProductList()) {
 			System.out.println(product);
 		}
 
 		// 商品名「米」の情報を表示
-		System.out.println("---商品名「米」の情報を表示する---");
+		System.out.println("\n---商品名「米」の情報を表示する---");
 		Product foundProduct = manager.getProductByName("米");
 		if (foundProduct != null) {
 			System.out.println(foundProduct);
