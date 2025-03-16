@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductsManager {
-//Product.javaに対応したリスト(配列)を作成:名前がproductList
-//紫のProductはジェネリクス
+	//Product.javaに対応したリスト(配列)を作成:名前がproductList
+	//紫のProductはジェネリクス
 	public List<Product> productList;
-	
+
 	// コンストラクタ
 	public ProductsManager() {
 		this.productList = new ArrayList<>();
@@ -19,10 +19,10 @@ public class ProductsManager {
 	}
 
 	// idを指定してProductを削除
-//removeIfは条件でリストの要素を削除するメソッド
+	//removeIfは条件でリストの要素を削除するメソッド
 	//今回はproductのidがremoveProductの引数と同じなら削除するやで
-//removeIf内の左のproductにProduct.javaのオブジェクトが入っている(クラスの全ての情報を持ってる)
-//productはremoveIf のラムダ式内で productList の各 Product を順番に指す変数
+	//removeIf内の左のproductにProduct.javaのオブジェクトが入っている(クラスの全ての情報を持ってる)
+	//productはremoveIf のラムダ式内で productList の各 Product を順番に指す変数
 	public void removeProduct(int id) {
 		productList.removeIf(product -> product.getId() == id);
 	}

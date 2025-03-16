@@ -32,7 +32,7 @@ public class main {
 		Product foundProduct = manager.getProductByName("米");
 		if (foundProduct != null) {
 			System.out.println(foundProduct);
-		} 
+		}
 	}
 
 }
