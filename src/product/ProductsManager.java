@@ -3,9 +3,8 @@ package product;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductsManager implements Searchable{
+public class ProductsManager implements Searchable {
 
-	
 	//Product.javaに対応したリスト(配列)を作成:名前がproductList
 	//紫のProductはジェネリクス
 	public List<Product> productList;
