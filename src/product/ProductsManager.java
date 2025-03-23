@@ -3,7 +3,9 @@ package product;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductsManager {
+public class ProductsManager implements Searchable{
+
+	
 	//Product.javaに対応したリスト(配列)を作成:名前がproductList
 	//紫のProductはジェネリクス
 	public List<Product> productList;
@@ -40,5 +42,11 @@ public class ProductsManager {
 	// 商品リストを取得
 	public List<Product> getProductList() {
 		return productList;
+	}
+
+	@Override
+	public Product search(String name) {
+		// TODO 自動生成されたメソッド・スタブ
+		return getProductByName(name);
 	}
 }
