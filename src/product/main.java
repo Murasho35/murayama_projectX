@@ -43,7 +43,7 @@ public class main {
 
 		//ソファの割引後も表示
 		int resultDiscount = afterDiscountPrice.calulateDiscountedPrice(sofaProduct.getPrice());
-		System.out.println("\n--商品名「ソファ」の情報と割引率表示する--");
+		System.out.println("\n--商品名「ソファ」の情報と割引率30%の情報を表示する--");
 		Product foundProduct2 = manager.getProductByName("ソファ");
 		System.out.print(foundProduct2);
 		System.out.print(", 割引後価格=");
