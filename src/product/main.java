@@ -46,6 +46,8 @@ public class main {
 		System.out.println("\n--商品名「ソファ」の情報と割引率30%の情報を表示する--");
 		Product foundProduct2 = manager.getProductByName("ソファ");
 		System.out.print(foundProduct2);
+		System.out.print(", 割引率=");
+		System.out.print(afterDiscountPrice.discountRate);
 		System.out.print(", 割引後価格=");
 		System.out.println(resultDiscount);//割引後の値段の変数を引数として入れてあげたい！1
 
