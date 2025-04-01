@@ -15,43 +15,67 @@ public class Main {
 				"\n0:終了\n" + "\nメニューから操作を選択してください。";
 
 		int manuNumber;
-
-		//1と3と4と5は完成かな！他がんばれ
+		//2は前回のnameだけで検索するやつを実装できればいいのでは
+		//2と3一緒になってるから、2をあたらしくsearch2みたいなメソッド作って完全一致検索してあげたい
 
 		do {
-			
+
 			//メニューを表示！
 			System.out.println(manuDisplay);
 
 			//メニュー番号スキャン
 			manuNumber = scannerManu.nextInt();
-			
+
 			//1の場合の表示と処理
 			switch ((int) manuNumber) {
 
 			case 1:
 
-				System.out.println("商品IDを入力してください:");
-				//IDの入力
-				int inputId = scannerManu.nextInt();
-				System.out.println("入力された商品ID : " + inputId);
-				System.out.println("商品名を入力してください:");
-				//商品名の入力
-				String inputName = scannerManu.next();
-				System.out.println("入力された商品名 : " + inputName);
-				System.out.println("価格を入力してください:");
-				//価格の入力
-				int inputPrice = scannerManu.nextInt();
-				System.out.println("入力された価格 : " + inputPrice);
-				System.out.println("在庫数を入力してください:");
-				//在庫の入力
-				int inputStock = scannerManu.nextInt();
-				System.out.println("入力された価格 : " + inputStock);
+				try {
+					System.out.println("商品IDを入力してください:");
+					//IDの入力
+					int inputId = scannerManu.nextInt();
+					System.out.println("入力された商品ID : " + inputId);
+					System.out.println("商品名を入力してください:");
 
-				//最後
-				Addition product = manager.addProduct(new Addition(inputId, inputName, inputPrice, inputStock));
-				System.out.println(product + "を登録しました。");
+					//商品名の入力
+					String inputName = scannerManu.next();
+					//例外処理
+					if (inputName.isEmpty()) {
+						System.out.println("無効な入力です。入力された商品名 : " + inputName);
+						throw new Exception("無効な商品名です。商品を正しく入力してください。");
+					}//ここまで例外処理
+					System.out.println("入力された商品名 : " + inputName);
+					System.out.println("価格を入力してください:");
+					
+
+					//価格の入力
+					int inputPrice = scannerManu.nextInt();
+					//例外処理
+					if (inputPrice < 0) {
+						System.out.println("無効な入力です。入力された価格 : " + inputPrice);
+						throw new Exception("無効な入力です。価格を正しく入力してください。");
+					}//ここまで例外処理
+					
+					System.out.println("入力された価格 : " + inputPrice);
+					System.out.println("在庫数を入力してください:");
 				
+					//在庫の入力
+					int inputStock = scannerManu.nextInt();
+					//例外処理
+					if (inputStock < 0) {
+						System.out.println("無効な入力です。入力された在庫数 : " + inputPrice);
+						throw new Exception("無効な入力です。価格を正しく入力してください。");
+					}//ここまで例外処理
+					System.out.println("入力された価格 : " + inputStock);
+					
+
+					//最後
+					Addition product = manager.addProduct(new Addition(inputId, inputName, inputPrice, inputStock));
+					System.out.println(product + "を登録しました。");
+				} catch (Exception e) {
+
+				}
 				break;
 
 			case 2:
@@ -64,7 +88,7 @@ public class Main {
 				Addition searchResult2 = (Addition) manager.search(inputName2);
 				System.out.println("取得した商品は、" + searchResult2);
 				break;
-				
+
 			case 3:
 				System.out.println("検索する商品名を入力してください:");
 				//商品名の入力
@@ -72,29 +96,28 @@ public class Main {
 				//続く
 				List<Addition> searchResults3 = manager.search(inputName3);
 				if (!searchResults3.isEmpty()) {
-		            for (Addition product3 : searchResults3) {
-		                System.out.println(product3);
-		            }
-		        } else {
-		            System.out.println("該当する商品が見つかりませんでした。");
-		        }
-				
+					for (Addition product3 : searchResults3) {
+						System.out.println(product3);
+					}
+				} else {
+					System.out.println("該当する商品が見つかりませんでした。");
+				}
+
 				break;
-				
+
 			case 4:
 				System.out.println("商品を全てを表示します");
 				for (Addition product4 : manager.getProductList()) {
 					System.out.println(product4);
 				}
 				break;
-			
+
 			case 5:
 				System.out.println("削除する商品のIDを入力してください:");
 				int inputID5 = scannerManu.nextInt();
 				manager.removeProduct(inputID5);
-				System.out.println("商品IDが"+inputID5+"の商品を削除しました");
-				
-				
+				System.out.println("商品IDが" + inputID5 + "の商品を削除しました");
+
 			}
 		} while (manuNumber != 0);
 
