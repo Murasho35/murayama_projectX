@@ -65,7 +65,7 @@ public class Main {
 					//例外処理
 					if (inputStock < 0) {
 						System.out.println("無効な入力です。入力された在庫数 : " + inputPrice);
-						throw new Exception("無効な入力です。価格を正しく入力してください。");
+						throw new Exception("無効な入力です。在庫を正しく入力してください。");
 					}//ここまで例外処理
 					System.out.println("入力された価格 : " + inputStock);
 					
@@ -73,7 +73,7 @@ public class Main {
 					//最後
 					Addition product = manager.addProduct(new Addition(inputId, inputName, inputPrice, inputStock));
 					System.out.println(product + "を登録しました。");
-				} catch (Exception e) {
+				} catch (Exception e) {e.printStackTrace();
 
 				}
 				break;
@@ -85,8 +85,11 @@ public class Main {
 				//商品名の入力
 				String inputName2 = scannerManu.next();
 
-				Addition searchResult2 = (Addition) manager.search(inputName2);
-				System.out.println("取得した商品は、" + searchResult2);
+				List<Addition> searchResults2 = manager.searchEquals(inputName2);
+				if (!searchResults2.isEmpty()) {
+					for (Addition product2 : searchResults2) {
+						System.out.println(product2);
+					}}
 				break;
 
 			case 3:

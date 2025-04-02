@@ -53,13 +53,22 @@ public class AdditionManager implements collectionSearchable{
 		// TODO 自動生成されたメソッド・スタブ
 		List<Addition> result = new ArrayList<>();
 		for (Addition product : productList) {
-			if (product.getName().contains(name)) {
+			if (product.getName().contains(name)) {//nameを含む
 				result.add(product);
 			}
 		}
 		return result;
 	}
 
-
+	//完全一致メソッド
+	public List<Addition> searchEquals(String name){
+		List<Addition> resultList = new ArrayList<>();
+		 for (Addition product2 : productList) {
+		        if (product2.getName().equals(name)) { // 完全一致
+		            resultList.add(product2);
+		        }
+		    }
+		    return resultList;
+	}
 
 }
