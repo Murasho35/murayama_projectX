@@ -53,9 +53,9 @@ public class ProductDB {
 			System.out.println("カテゴリーIDを入力してください :");
 			int inputID = scannerManu.nextInt();
 			
-			Statement statement = conn.createStatement();
+			stmt = conn.createStatement();
 			String SQL = "INSERT INTO product_table(id, name, price, stock) VALUES("+inputID+", '"+inputName+"', "+inputPrice+", "+inputStock+") ";
-			statement.executeUpdate(SQL);
+			stmt.executeUpdate(SQL);
 			
 			System.out.println("登録成功件数: 1件"+"\n登録内容:");
 			System.out.print("商品名: "+inputName+", 価格: " +inputPrice+", 在庫数: "+inputStock+", カテゴリーID: "+inputID);

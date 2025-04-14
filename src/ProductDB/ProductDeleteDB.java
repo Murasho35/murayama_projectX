@@ -44,9 +44,9 @@ public class ProductDeleteDB {
 			System.out.println("商品IDを入力してください :");
 			int inputID = scannerManu.nextInt();
 			
-			Statement statement = conn.createStatement();
+			stmt = conn.createStatement();
 			String SQL = "DELETE FROM product_table where id="+inputID+" " ;
-			statement.executeUpdate(SQL);
+			stmt.executeUpdate(SQL);
 			
 			System.out.println("削除成功件数: 1件"+"\n商品ID "+inputID+" を削除しました。");
 			

@@ -51,13 +51,17 @@ public class ProductUpdate {
 			System.out.println("在庫数を入力してください :");
 			int inputStock = scannerManu.nextInt();
 			
-			Statement statement = conn.createStatement();
+			stmt = conn.createStatement();
 			String SQL = "UPDATE product_table SET price="+inputPrice+", stock="+inputStock+" WHERE id="+inputID+"";
-			statement.executeUpdate(SQL);
+			int result = stmt.executeUpdate(SQL);
 			
-			System.out.println("更新成功件数: 1件"+"\n更新内容:");
+			if(result == 0) {
+				System.out.println("更新成功件数:"+result+ "件"+"\n更新失敗:");
+			}
+			else {
+			System.out.println("更新成功件数:"+result+ "件"+"\n更新内容:");
 			System.out.print("商品ID: "+inputID+", 価格: "+inputPrice+", 在庫数: "+inputStock);
-			
+			}
 			
 			scannerManu.close();
 			//スキャンたやつを前はproductオブジェクトに入れてたと思うけど
