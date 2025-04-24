@@ -35,7 +35,6 @@ public class transactionDB {
 			e.printStackTrace();
 		}
 
-
 		try {
 			//トランザクションのオートコミット解除
 			conn.setAutoCommit(false);
@@ -83,7 +82,7 @@ public class transactionDB {
 			}
 
 			//成功したとき
-			if (result == 2) {
+			if (result == updateCount) {
 				conn.commit();
 				conn.setAutoCommit(true);
 				conn.close();
@@ -98,12 +97,10 @@ public class transactionDB {
 				conn.rollback();
 				conn.setAutoCommit(true);
 				conn.close();
-				System.out.println(""+updateCount+"件全ての更新に失敗しました。:");
+				System.out.println("" + updateCount + "件全ての更新に失敗しました。:");
 				System.out.println("更新成功件数:" + result + "件" + "\nロールバックしました。:");
 
 			}
-
-		
 
 		} catch (SQLException e) {
 			e.printStackTrace();
